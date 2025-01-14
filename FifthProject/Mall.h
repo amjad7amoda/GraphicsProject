@@ -7,7 +7,7 @@ public:
 
 	Mall(float w, float h, float d);
 	void DrawMallSkyBlock();
-	void DrawRestaurant();
+	void DrawMarkets();
 	void DrawShopFront(float dw, float dh);
 	void DrawOuterMall();
 	void Draw();

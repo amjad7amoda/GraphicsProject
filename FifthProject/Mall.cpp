@@ -197,26 +197,19 @@ void Mall::DrawMallSkyBlock() {
 
 	glSetColor3f(1, 1, 1);
 }
-void Mall::DrawRestaurant(){
-
-	
+void Mall::DrawMarkets() {
 	glPushMatrix();
 	glTranslatef(-25, 0, -20);
-
 	Restaurant restaurant(29, 10, 20);
 	restaurant.Draw();
 	restaurant.DrawOuterRestaurant();
 	glPopMatrix();
 
-	Shop shop(30, 11, 20);
 	glPushMatrix();
-	glTranslatef(-25, 0, -20);
-	//shop.setRightTexture(SKYUP);
-	//shop.setFrontTexture(SKYUP);
-	//shop.setRightTexture(SKYUP);
-	
+	glTranslatef(25, 0, 20);
+	Coffee coffee(30, 11, 20);
+	coffee.draw();
 	glPopMatrix();
-	
 
 	glSetColor3f(1, 1, 1);
 	
@@ -379,6 +372,10 @@ void Mall::DrawGlass() {
 		glVertex3f(-5, 5, -10);
 		glEnd();
 		glPopMatrix();
+
+
+
+	//Finish The glasses in mall.
 	glColor4f(1, 1, 1, 1);
 	glDepthMask(GL_TRUE);
 	glDisable(GL_BLEND);
@@ -526,36 +523,16 @@ void Mall::DrawStairs() {
 }
 
 void Mall::Draw() {
-	//First Floor
-	DrawRestaurant();
-	Shop shop(30, 11, 20);
-	//glPushMatrix();
-	//glTranslatef(25, 0, -20);
-	////shop.setFrontTexture(SKYBACK);
-	//glSetColor3f(0.5, 0.8, 0.7);
-	//shop.Draw(5, 3);
-	//glPopMatrix();
+	//Draw Markets
+	DrawMarkets();
 
-	glPushMatrix();
-	glTranslatef(25, 0, 20);
-	Coffee coffee(30, 11, 20);
-	coffee.drawCoffeeSkyBlock();
-	glPopMatrix();
-
-	//glPushMatrix();
-	//glTranslatef(-25, 0, 20);
-	//glRotatef(180, 0, 1, 0);
-	//glSetColor3f(0, 0.5, 1);
-	//shop.Draw(5, 3);
-	//glPopMatrix();
-
+	//Outer Mall and Mall SkyBlock
 	DrawMallSkyBlock();
 	DrawOuterMall();
+
+	//Draw Mall Glasses
 	DrawGlass();
-
-
 	glPushMatrix();
-	//glTranslatef(0, 0, -25);
 	DrawStairs();
 	glPopMatrix();
 }

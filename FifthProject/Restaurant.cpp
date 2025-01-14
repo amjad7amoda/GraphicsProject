@@ -365,19 +365,19 @@ void Restaurant::DrawPlate(int w, int h, float frameThickness, int texture) {
 void Restaurant::DrawPlates() {
 	//Draw Plate
 	glPushMatrix();
-	glTranslatef(-width / 2 + 0.1f, height / 2, 2);
+	glTranslatef(-29.01 / 2 + 0.1f, 11 / 2, 2);
 	glRotatef(90, 0, 1, 0);
 	DrawPlate(7, 4, 0.1, SyriaPlate);
 	glPopMatrix();
 
 	glPushMatrix();
-	glTranslatef(+width / 2 - 0.1f, height / 1.5, -1);
+	glTranslatef(29.01/ 2 - 0.1f, 11 / 1.5, -1);
 	glRotatef(-90, 0, 1, 0);
 	DrawPlate(4, 2, 0.1, SalesPlate);
 	glPopMatrix();
 
 	glPushMatrix();
-	glTranslatef(+width / 2 - 0.1f, height / 1.5, 5);
+	glTranslatef(29.01 / 2 - 0.1f, 11 / 1.5, 5);
 	glRotatef(-90, 0, 1, 0);
 	DrawPlate(4, 2, 0.05, SalesPlate);
 	glPopMatrix();

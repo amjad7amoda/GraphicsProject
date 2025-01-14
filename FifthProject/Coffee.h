@@ -11,5 +11,9 @@ public:
 	Coffee(float w, float h, float d);
 	void Coffee::drawCoffeeSkyBlock();
 	void drawOuterCoffee();
+	void draw();
+	void drawSingleTable(float x, float y, float z);
+	void drawDoubleTable(float x, float y, float z);
+	void drawCoffeeShop();
 };
 #endif

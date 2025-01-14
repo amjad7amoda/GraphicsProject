@@ -1,11 +1,28 @@
 #include "Coffee.h"
-
+#include "Chair.h"
+#include "Table.h"
 extern int outerCoffee, innerCoffeeWall, innerCoffeeRoof, innerCoffeeGround;
 
 Coffee::Coffee(float w, float h, float d) {
 	width = w;
 	height = h;
 	depth = d;
+}
+
+void Coffee::draw() {
+
+	drawSingleTable(11, 0, -8); 
+	drawSingleTable(5, 0, -8);
+	drawSingleTable(-1, 0, -8);
+	drawDoubleTable(-11, 0, 6);
+	drawDoubleTable(-5, 0, 6);
+	glPushMatrix();
+	glRotatef(90, 0, 1, 0);
+	drawSingleTable(7, 0, -13);
+	drawSingleTable(1, 0, -13);
+	glPopMatrix();
+	drawCoffeeSkyBlock();
+	drawOuterCoffee();
 }
 
 void Coffee::drawCoffeeSkyBlock() {
@@ -164,5 +181,102 @@ void Coffee::drawOuterCoffee() {
 	glPopMatrix();
 
 	glDisable(GL_TEXTURE_2D);
+	glSetColor3f(1, 1, 1);
+}
+
+void Coffee::drawSingleTable(float x, float y, float z) {
+	glSetColor3f(1, 1, 1);
+	glDisable(GL_LIGHTING);
+	//Table
+	float tableTopSize = 2.0f;
+	float tableTopThickness = 0.15f;
+	float tableHeight = 1.5f;
+	float legThickness = 0.15f;
+
+	// Chair dimensions
+	float chairSeatSize = 1.0f;
+	float chairSeatHeight = 1.0f;
+	float chairLegThickness = 0.1f;
+	float chairBackrestHeight = 1.0f;
+
+	Table singleTable(x, y, z, tableTopSize, tableTopThickness, tableHeight, legThickness);
+	singleTable.Draw();
+
+	//Chairs
+	float chairDistance = tableTopSize / 2.0f + chairSeatSize / 2.0f + 0.1f;
+	Chair chair(0, 0, 0, chairSeatSize, chairSeatHeight, chairBackrestHeight, chairLegThickness);
+	//first chair
+	glPushMatrix();
+	glTranslatef(x - chairDistance, y, z);
+	glRotatef(90.0f, 0.0f, 1.0f, 0.0f);
+	chair.Draw();
+	glPopMatrix();
+	//second chair
+	glPushMatrix();
+	glTranslatef(x + chairDistance, y, z);
+	glRotatef(270, 0.0f, 1.0f, 0.0f);
+	chair.Draw();
+	glPopMatrix();
+
+	glSetColor3f(1, 1, 1);
+	glEnable(GL_LIGHTING);
+}
+
+void Coffee::drawDoubleTable(float x, float y, float z) {
+	glSetColor3f(1, 1, 1);
+	glDisable(GL_LIGHTING);
+
+	float tableTopSize = 2.0f;
+	float tableTopThickness = 0.15f;
+	float tableHeight = 1.5f;
+	float legThickness = 0.15f;
+
+	// Chair dimensions
+	float chairSeatSize = 1.0f;
+	float chairSeatHeight = 1.0f;
+	float chairLegThickness = 0.1f;
+	float chairBackrestHeight = 1.0f;
+
+	Table firstTable(x, y, z, tableTopSize, tableTopThickness, tableHeight, legThickness);
+	Table secondTable(x - tableTopSize - 0.05, y, z, tableTopSize, tableTopThickness, tableHeight, legThickness);
+	firstTable.Draw();
+	secondTable.Draw();
+
+	//Chairs
+	float chairDistance = tableTopSize / 2.0f + chairSeatSize / 2.0f + 0.1f;
+	Chair chair(0, 0, 0, chairSeatSize, chairSeatHeight, chairBackrestHeight, chairLegThickness);
+	//left chairs
+	glPushMatrix();
+	glTranslatef(x , y, z - 1.5);
+	glRotatef(0, 0.0f, 1.0f, 0.0f);
+	chair.Draw();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslatef(x, y, z + 1.5);
+	glRotatef(180.0f, 0.0f, 1.0f, 0.0f);
+	chair.Draw();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslatef(x - 2, y, z + 1.5);
+	glRotatef(180.0f, 0.0f, 1.0f, 0.0f);
+	chair.Draw();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslatef(x - 2, y, z - 1.5);
+	glRotatef(0.0f, 0.0f, 1.0f, 0.0f);
+	chair.Draw();
+	glPopMatrix();
+
+	glSetColor3f(1, 1, 1);
+	glEnable(GL_LIGHTING);
+}
+
+void Coffee::drawCoffeeShop() {
+	glSetColor3f(1, 1, 1);
+	glPushMatrix();
+	glTranslatef(5, 0, 5);
+
+
+	glPopMatrix();
 	glSetColor3f(1, 1, 1);
 }
