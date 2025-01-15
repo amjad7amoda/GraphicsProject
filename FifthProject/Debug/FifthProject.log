@@ -1,4 +1,4 @@
-﻿  Coffee.cpp
-  Mall.cpp
-  Generating Code...
+﻿  Source.cpp
+C:\Users\ahamo\OneDrive\Desktop\OpenGL\FifthProject\Source.cpp(138,27): warning C4129: 'D': unrecognized character escape sequence
+C:\Users\ahamo\OneDrive\Desktop\OpenGL\FifthProject\Source.cpp(496,3): warning C4838: conversion from 'int' to 'BYTE' requires a narrowing conversion
   FifthProject.vcxproj -> C:\Users\ahamo\OneDrive\Desktop\OpenGL\Debug\FifthProject.exe

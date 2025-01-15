@@ -51,6 +51,9 @@
     <ClCompile Include="Coffee.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="city.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="camera.h">

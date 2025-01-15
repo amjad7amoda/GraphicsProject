@@ -15,7 +15,7 @@
 #include "Restaurant.h"
 #include "Colba.h"
 #include "Mall.h"
-
+#include "city.h"
 #ifndef M_PI
 #define M_PI 3.14159265358979323846
 #endif
@@ -71,6 +71,11 @@ int outerCoffee, innerCoffeeWall, innerCoffeeRoof, innerCoffeeGround;
 int McDonaldsLogo, McDonaldsUnderLogo, PizzaHotLogo, PizzaHotUnderLogo;
 int SyriaPlate, SalesPlate;
 int Fence, tableTexture, tableLegsTexture;
+
+//Suliman
+int  Front, Ground, Left, Right, Back, Up;
+int grass, fbuilding, street, ubuilding;
+int fbuilding2, fbuilding3, fbuilding4, CenterStreet, SideWalk, water;
 
 //Keys Global
 int CoffeeDoor = 0;
@@ -160,6 +165,28 @@ int InitGL(GLvoid)										// All Setup For OpenGL Goes Here
 	glMaterialfv(GL_BACK, GL_SPECULAR, MatSpec);
 	glMaterialfv(GL_BACK, GL_SHININESS, MatShn);
 	glEnable(GL_COLOR_MATERIAL);
+
+	//Suliman
+	// skybox
+	Front = LoadTexture("Gallery/sky_box/Front.bmp", 255);
+	Ground = LoadTexture("Gallery/sky_box/Ground.bmp", 255);
+	Left = LoadTexture("Gallery/sky_box/Left.bmp", 255);
+	Back = LoadTexture("Gallery/sky_box/Back.bmp", 255);
+	Right = LoadTexture("Gallery/sky_box/Right.bmp", 255);
+	Up = LoadTexture("Gallery/sky_box/up.bmp", 255);
+	grass = LoadTexture("Gallery/sky_box/grass.bmp", 255);
+	fbuilding = LoadTexture("Gallery/sky_box/fbuilding.bmp", 255);
+	fbuilding2 = LoadTexture("Gallery/sky_box/fbuilding2.bmp", 255);
+	fbuilding3 = LoadTexture("Gallery/sky_box/fbuilding3.bmp", 255);
+	fbuilding4 = LoadTexture("Gallery/sky_box/fbuilding4.bmp", 255);
+	ubuilding = LoadTexture("Gallery/sky_box/ubuilding.bmp", 255);
+	street = LoadTexture("Gallery/sky_box/street.bmp", 255);
+	CenterStreet = LoadTexture("Gallery/sky_box/CenterStreet.bmp", 255);
+	SideWalk = LoadTexture("Gallery/sky_box/SideWalk.bmp", 255);
+	water = LoadTexture("Gallery/sky_box/water.bmp", 255);
+
+
+
 
 	//Models Include
 	//Tank
@@ -306,10 +333,20 @@ int DrawGLScene(GLvoid)
 	CameraController(keys, 0.1);
 	
 	
+	
+
+
+	glPushMatrix();
+	glScalef(0.1, 0.1, 0.1);
+	glPushMatrix();
+	glTranslatef(-65, 0.2, -55 + 0.03);
 	Mall mall(80, 25, 60);
 	mall.Draw();
-	glSetColor3f(0, 0, 0);
-	mall.DrawOuterMall();
+	glPopMatrix();
+	city city1;
+	city1.Draw();
+	
+	glPopMatrix();
 	
 	return TRUE;
 }

@@ -67,6 +67,7 @@
     <ClCompile Include="3DTexture.cpp" />
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="Chair.cpp" />
+    <ClCompile Include="city.cpp" />
     <ClCompile Include="Coffee.cpp" />
     <ClCompile Include="Colba.cpp" />
     <ClCompile Include="Mall.cpp" />

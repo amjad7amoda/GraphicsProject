@@ -523,6 +523,7 @@ void Mall::DrawStairs() {
 }
 
 void Mall::Draw() {
+	glSetColor3f(1, 1, 1);
 	//Draw Markets
 	DrawMarkets();
 
@@ -535,4 +536,6 @@ void Mall::Draw() {
 	glPushMatrix();
 	DrawStairs();
 	glPopMatrix();
+
+	glSetColor3f(1, 1, 1);
 }
